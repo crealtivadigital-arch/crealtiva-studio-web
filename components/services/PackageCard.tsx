@@ -16,81 +16,112 @@ function buildWhatsAppUrl(pkgName: string): string {
 }
 
 export default function PackageCard({ pkg, index }: PackageCardProps) {
+  const isFeatured = !!pkg.featured;
+  const isCotizacion = pkg.priceLabel === "Cotización";
+
   return (
     <motion.div
-      className={`flex flex-col border transition-shadow duration-300 hover:shadow-lg ${
-        pkg.featured
-          ? "border-dusky-rose bg-white shadow-md relative"
-          : "border-pearl bg-white"
-      }`}
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.55, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+      className={`group relative flex flex-col transition-all duration-300 ${
+        isFeatured
+          ? "shadow-[0_8px_40px_rgba(177,128,147,0.18)] hover:shadow-[0_16px_56px_rgba(177,128,147,0.28)]"
+          : "shadow-sm hover:shadow-md"
+      }`}
     >
-      {pkg.featured && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className="bg-dusky-rose text-white kicker px-4 py-1.5 text-[10px]">
+      {/* Featured badge */}
+      {isFeatured && (
+        <div className="absolute -top-3.5 inset-x-0 flex justify-center pointer-events-none z-10">
+          <span className="bg-dusky-rose text-white kicker px-5 py-1.5 text-[9.5px] tracking-[0.25em]">
             Más elegido
           </span>
         </div>
       )}
 
-      <div className="p-7 flex flex-col gap-5 flex-1">
-        {/* Header */}
-        <div>
-          <h3 className="font-fraunces font-medium text-xl text-ink leading-tight">
-            {pkg.name}
-          </h3>
-          {pkg.duration && (
-            <p className="mt-1 kicker text-ink/40 text-[10px]">{pkg.duration}</p>
-          )}
-          <p className="mt-3 text-sm font-montserrat text-ink/70 leading-relaxed">
-            {pkg.highlight}
-          </p>
-        </div>
+      {/* Card body */}
+      <div
+        className={`flex flex-col flex-1 ${
+          isFeatured
+            ? "bg-white border border-dusky-rose/60"
+            : "bg-white border border-pearl"
+        }`}
+      >
+        {/* Top accent line for featured */}
+        {isFeatured && (
+          <div className="h-0.5 bg-gradient-to-r from-dusky-rose via-champagne to-dusky-rose" />
+        )}
 
-        {/* Divider */}
-        <span className="divider-champagne" />
-
-        {/* Includes */}
-        <ul className="flex flex-col gap-2 flex-1">
-          {pkg.includes.map((item) => (
-            <li key={item} className="flex items-start gap-2.5 text-sm font-montserrat text-ink/80">
-              <svg
-                className="w-3.5 h-3.5 text-champagne flex-shrink-0 mt-0.5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              {item}
-            </li>
-          ))}
-        </ul>
-
-        {/* Price + CTA */}
-        <div className="pt-4 border-t border-pearl">
-          <div className="flex items-baseline gap-1 mb-4">
-            {pkg.priceLabel && (
-              <span className="text-xs font-montserrat text-ink/50">{pkg.priceLabel}</span>
+        <div className="p-7 flex flex-col gap-5 flex-1">
+          {/* Header */}
+          <div>
+            <h3 className="font-fraunces font-medium text-[1.2rem] text-ink leading-snug">
+              {pkg.name}
+            </h3>
+            {pkg.duration && (
+              <p className="mt-1 kicker text-ink/35 text-[10px]">{pkg.duration}</p>
             )}
-            <span className="font-fraunces text-3xl font-medium text-ink">
-              ${pkg.price}
-            </span>
-            <span className="text-xs font-montserrat text-ink/40">.00</span>
+            <p className="mt-3 text-[13.5px] font-montserrat text-ink/65 leading-[1.7]">
+              {pkg.highlight}
+            </p>
           </div>
-          <Button
-            href={buildWhatsAppUrl(pkg.name)}
-            external
-            variant={pkg.featured ? "primary" : "secondary"}
-            size="sm"
-            className="w-full justify-center"
-          >
-            Cotizar este paquete
-          </Button>
+
+          {/* Divider */}
+          <span className="divider-champagne" />
+
+          {/* Includes list */}
+          <ul className="flex flex-col gap-2.5 flex-1">
+            {pkg.includes.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-2.5 text-[13px] font-montserrat text-ink/75 leading-snug"
+              >
+                <svg
+                  className="w-3.5 h-3.5 text-champagne flex-shrink-0 mt-0.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          {/* Price + CTA */}
+          <div className="pt-5 border-t border-pearl mt-2">
+            <div className="flex items-baseline gap-1.5 mb-4">
+              {pkg.priceLabel && (
+                <span className="text-xs font-montserrat text-ink/40 font-medium">
+                  {pkg.priceLabel}
+                </span>
+              )}
+              {isCotizacion ? (
+                <span className="font-fraunces text-2xl font-medium text-ink">
+                  A cotizar
+                </span>
+              ) : (
+                <>
+                  <span className="font-fraunces text-4xl font-medium text-ink leading-none">
+                    ${pkg.price}
+                  </span>
+                  <span className="text-xs font-montserrat text-ink/35">.00</span>
+                </>
+              )}
+            </div>
+            <Button
+              href={buildWhatsAppUrl(pkg.name)}
+              external
+              variant={isFeatured ? "primary" : "secondary"}
+              size="sm"
+              className="w-full justify-center"
+            >
+              {isCotizacion ? "Solicitar propuesta" : "Cotizar este paquete"}
+            </Button>
+          </div>
         </div>
       </div>
     </motion.div>
