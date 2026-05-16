@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors — Crealtiva Studio 2026 */
+  --color-white: #ffffff;
+  --color-cream: #f1e2cf;
+  --color-ink: #1a1416;
+  --color-dusky-rose: #b18093;
+  --color-rose-deep: #8c5f73;
+  --color-champagne: #c9a87c;
+  --color-pearl: #e7e3e0;
+
+  /* Typography */
+  --font-fraunces: var(--font-fraunces-var), "Fraunces", serif;
+  --font-montserrat: var(--font-montserrat-var), "Montserrat", sans-serif;
+  --font-alex: var(--font-alex-var), "Alex Brush", cursive;
+
+  /* Spacing extras */
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+  --spacing-120: 30rem;
+  --spacing-160: 40rem;
+}
+
+/* Base resets */
+:root {
+  --background: #ffffff;
+  --foreground: #1a1416;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-montserrat);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Kicker utility — Montserrat 600 caps with letter-spacing */
+.kicker {
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  font-size: 0.6875rem; /* 11px */
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Display heading — Fraunces 400 */
+.display {
+  font-family: var(--font-fraunces);
+  font-weight: 400;
+  font-size: clamp(3rem, 6vw, 4.5rem); /* 48–72px */
+  line-height: 1.1;
+}
+
+/* Champagne divider line */
+.divider-champagne {
+  width: 3rem;
+  height: 1px;
+  background-color: #c9a87c;
+  display: block;
+}
+
+/* Custom cursor */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a, button, [role="button"] {
+    cursor: none;
+  }
+}
