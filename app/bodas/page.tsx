@@ -4,7 +4,7 @@ import PackageCard from "@/components/services/PackageCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Button from "@/components/ui/Button";
 import { bodasPackages } from "@/lib/data/packages";
-import { CALENDAR_URL, WHATSAPP_URL } from "@/lib/data/navigation";
+import { WHATSAPP_URL } from "@/lib/data/navigation";
 
 export const metadata: Metadata = {
   title: "Fotografía de Bodas en Quito",
@@ -46,7 +46,6 @@ export default function BodasPage() {
         title={`Tu día más tuyo,\ncapturado para siempre`}
         description="Fotografiamos bodas con estilo editorial y cercanía humana. Cada imagen cuenta la historia que viviste, con la calidez que merece tu momento más especial."
         ctaLabel="Ver paquetes"
-        calendarLabel="Agendar asesoría gratuita"
       />
 
       {/* Packages */}
@@ -164,7 +163,7 @@ export default function BodasPage() {
             <Button href={WHATSAPP_URL} external size="lg">
               Cotizar por WhatsApp
             </Button>
-            <Button href={CALENDAR_URL} external variant="ghost" size="lg">
+            <Button href="/contacto" variant="ghost" size="lg">
               Agendar asesoría
             </Button>
           </div>

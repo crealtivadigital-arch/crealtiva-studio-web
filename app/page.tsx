@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { WHATSAPP_URL, CALENDAR_URL } from "@/lib/data/navigation";
+import { WHATSAPP_URL } from "@/lib/data/navigation";
 
 const priorityServices = [
   {
@@ -231,7 +231,7 @@ export default function HomePage() {
                 <Button href="/nosotros" variant="secondary" size="sm">
                   Conocernos
                 </Button>
-                <Button href={CALENDAR_URL} external variant="ghost" size="sm">
+                <Button href="/contacto" variant="ghost" size="sm">
                   Agendar asesoría
                 </Button>
               </div>
@@ -282,7 +282,7 @@ export default function HomePage() {
             <Button href={WHATSAPP_URL} external size="lg">
               Escribir por WhatsApp
             </Button>
-            <Button href={CALENDAR_URL} external variant="secondary" size="lg">
+            <Button href="/contacto" variant="secondary" size="lg">
               Agendar asesoría
             </Button>
           </div>

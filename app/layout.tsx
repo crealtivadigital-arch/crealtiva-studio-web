@@ -3,7 +3,7 @@ import { Fraunces, Montserrat, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
-import WhatsAppButton from "@/components/shared/WhatsAppButton";
+import ChatWidget from "@/components/shared/ChatWidget";
 import CustomCursor from "@/components/shared/CustomCursor";
 
 const fraunces = Fraunces({
@@ -78,7 +78,7 @@ export default function RootLayout({
         <NavBar />
         <main className="flex-1">{children}</main>
         <Footer />
-        <WhatsAppButton />
+        <ChatWidget />
       </body>
     </html>
   );

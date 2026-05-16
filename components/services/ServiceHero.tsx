@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
-import { WHATSAPP_URL, CALENDAR_URL } from "@/lib/data/navigation";
+import { WHATSAPP_URL } from "@/lib/data/navigation";
 
 interface ServiceHeroProps {
   kicker: string;
@@ -11,7 +11,6 @@ interface ServiceHeroProps {
   imageSrc?: string;
   imageAlt?: string;
   ctaLabel?: string;
-  calendarLabel?: string;
 }
 
 export default function ServiceHero({
@@ -21,11 +20,9 @@ export default function ServiceHero({
   imageSrc = "/images/placeholder-hero.jpg",
   imageAlt = "Crealtiva Studio",
   ctaLabel = "Cotizar ahora",
-  calendarLabel = "Agendar asesoría",
 }: ServiceHeroProps) {
   return (
     <section className="relative min-h-[90vh] flex items-end bg-ink overflow-hidden">
-      {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${imageSrc})` }}
@@ -33,7 +30,6 @@ export default function ServiceHero({
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pb-20 pt-32 w-full">
         <motion.div
           className="max-w-2xl"
@@ -50,9 +46,6 @@ export default function ServiceHero({
           <div className="flex flex-wrap gap-3 mt-8">
             <Button href={WHATSAPP_URL} external size="lg">
               {ctaLabel}
-            </Button>
-            <Button href={CALENDAR_URL} external variant="ghost" size="lg">
-              {calendarLabel}
             </Button>
           </div>
         </motion.div>

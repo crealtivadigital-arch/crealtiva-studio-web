@@ -48,7 +48,6 @@ export const navigation: NavItem[] = [
   { label: "Contacto", href: "/contacto" },
 ];
 
-export const WHATSAPP_NUMBER = "593XXXXXXXXX"; // reemplazar con número real
+export const WHATSAPP_NUMBER = "593998118083";
 export const WHATSAPP_MESSAGE = "Hola, me interesa conocer más sobre sus servicios fotográficos.";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
-export const CALENDAR_URL = "https://calendar.google.com"; // reemplazar con link real
