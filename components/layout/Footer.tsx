@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const services = [
   { label: "Bodas", href: "/bodas" },
@@ -55,9 +56,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            <span className="font-alex text-3xl text-cream" style={{ fontFamily: "var(--font-alex)" }}>
-              Crealtiva Studio
-            </span>
+            <Link href="/">
+              <Image
+                src="https://crealtivastudio.com/wp-content/uploads/2026/01/Diseno-sin-titulo.png"
+                alt="Crealtiva Studio"
+                width={160}
+                height={52}
+                className="h-11 w-auto object-contain brightness-0 invert"
+              />
+            </Link>
             <p className="text-sm font-montserrat text-cream/60 leading-relaxed max-w-xs">
               Convertimos momentos irrepetibles en imágenes que se miran cien
               veces sin cansar. Quito, Ecuador.

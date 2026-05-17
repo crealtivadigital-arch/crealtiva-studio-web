@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { navigation, WHATSAPP_URL } from "@/lib/data/navigation";
 import Button from "@/components/ui/Button";
@@ -34,12 +35,16 @@ export default function NavBar() {
       <nav className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0" onClick={() => setMenuOpen(false)}>
-          <span
-            className="font-alex text-2xl text-ink"
-            style={{ fontFamily: "var(--font-alex)" }}
-          >
-            Crealtiva Studio
-          </span>
+          <Image
+            src="https://crealtivastudio.com/wp-content/uploads/2026/01/Diseno-sin-titulo.png"
+            alt="Crealtiva Studio"
+            width={160}
+            height={52}
+            className={`h-10 lg:h-12 w-auto object-contain transition-all duration-300 ${
+              scrolled ? "brightness-0" : "brightness-0 invert"
+            }`}
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
