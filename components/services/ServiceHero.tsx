@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Button from "@/components/ui/Button";
 import { WHATSAPP_URL } from "@/lib/data/navigation";
 
@@ -42,20 +43,27 @@ export default function ServiceHero({
   ctaLabel = "Cotizar ahora",
   secondaryCta,
 }: ServiceHeroProps) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
+
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-ink">
+    <section ref={ref} className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-ink">
 
       {/* ── Background ── */}
       {imageSrc ? (
         <>
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            fill
-            priority
-            className="object-cover object-center"
-            sizes="100vw"
-          />
+          <motion.div className="absolute inset-0" style={{ y: bgY, scale: 1.1 }}>
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+          </motion.div>
           <div className="absolute inset-0 bg-ink/52" />
         </>
       ) : (
@@ -71,7 +79,7 @@ export default function ServiceHero({
       )}
 
       {/* ── Content — centrado ── */}
-      <div className="relative z-10 w-full max-w-3xl mx-auto px-6 lg:px-8 text-center py-40">
+      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 w-full max-w-3xl mx-auto px-6 lg:px-8 text-center py-40">
         <motion.div className="flex flex-col items-center">
           <motion.span {...riseProps(0.05)} className="kicker text-champagne">
             {kicker}
@@ -111,7 +119,7 @@ export default function ServiceHero({
             )}
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* ── Scroll indicator ── */}
       <motion.div

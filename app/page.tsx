@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -72,74 +73,111 @@ const portfolioGrid = [
 ];
 
 export default function HomePage() {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "28%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+
   return (
     <>
       {/* ─── HERO ─── */}
-      <section className="relative w-full overflow-hidden" style={{ height: "100svh", minHeight: "600px" }}>
-        <Image
-          src="https://crealtivastudio.com/wp-content/uploads/2026/03/portada-2-scaled.webp"
-          alt="Fotografía de bodas en Quito — Crealtiva Studio"
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-ink/50" />
+      <section ref={heroRef} className="relative w-full overflow-hidden" style={{ height: "100svh", minHeight: "600px" }}>
+        {/* Parallax image */}
+        <motion.div className="absolute inset-0" style={{ y: heroY, scale: 1.12 }}>
+          <Image
+            src="https://crealtivastudio.com/wp-content/uploads/2026/03/portada-2-scaled.webp"
+            alt="Fotografía de bodas en Quito — Crealtiva Studio"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-ink/48" />
 
-        {/* Texto centrado */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+        {/* Texto centrado — se desvanece al hacer scroll */}
+        <motion.div
+          className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
+          style={{ opacity: heroOpacity }}
+        >
           <motion.div
             className="flex flex-col items-center"
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            <span className="kicker text-champagne tracking-[0.25em]">
+            <motion.span
+              className="kicker text-champagne tracking-[0.25em]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            >
               Estudio de Fotografía · Quito, Ecuador
-            </span>
-            <h1
+            </motion.span>
+            <motion.h1
               className="font-fraunces font-medium text-cream mt-5 leading-[1.08] max-w-[720px]"
               style={{ fontSize: "clamp(2.2rem, 5.5vw, 4.5rem)" }}
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
             >
               El amor de tu gran día,{" "}
               <em className="not-italic" style={{ color: "#B18093" }}>
                 capturado
               </em>{" "}
               para siempre
-            </h1>
-            <div
+            </motion.h1>
+            <motion.div
               className="mt-7 mb-7"
               style={{ width: "3rem", height: "1px", background: "#C9A87C", display: "block" }}
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
             />
-            <p className="font-montserrat text-cream/80 leading-relaxed max-w-[420px]" style={{ fontSize: "15px" }}>
+            <motion.p
+              className="font-montserrat text-cream/80 leading-relaxed max-w-[420px]"
+              style={{ fontSize: "15px" }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
               Convertimos momentos irrepetibles en imágenes que se miran cien veces sin cansar.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 mt-10">
+            </motion.p>
+            <motion.div
+              className="flex flex-wrap justify-center gap-4 mt-10"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            >
               <Button href={WHATSAPP_URL} external size="lg">
                 Cotizar ahora
               </Button>
               <Button href="/portafolio" variant="ghost-light" size="lg">
                 Ver portafolio
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Scroll hint */}
         <motion.div
           className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+          style={{ opacity: heroOpacity }}
         >
           <span className="kicker text-cream/35" style={{ fontSize: "9px", letterSpacing: "0.3em" }}>
             Explorar
           </span>
-          <div
+          <motion.div
             style={{
               width: "1px",
               height: "36px",
-              background: "linear-gradient(to bottom, rgba(249,240,230,0.35), transparent)",
+              background: "linear-gradient(to bottom, rgba(249,240,230,0.4), transparent)",
             }}
+            animate={{ scaleY: [1, 0.4, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           />
         </motion.div>
       </section>

@@ -1,15 +1,18 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
+import PortfolioGallery from "@/components/portfolio/PortfolioGallery";
 
-export const metadata: Metadata = { title: "Portafolio" };
+export const metadata: Metadata = {
+  title: "Portafolio de Fotografía en Quito",
+  description:
+    "Galería completa de fotografía de bodas, quinceaños, pedida de mano, embarazo, graduaciones y eventos en Quito. Crealtiva Studio — imágenes que se miran cien veces.",
+  keywords: [
+    "portafolio fotógrafo Quito",
+    "galería fotos bodas Ecuador",
+    "fotografía quinceaños portafolio",
+    "Crealtiva Studio portafolio",
+  ],
+};
 
-export default function Page() {
-  return (
-    <div className="min-h-screen pt-20 flex items-center justify-center bg-cream/30">
-      <div className="text-center">
-        <p className="kicker text-dusky-rose">Portafolio</p>
-        <h1 className="font-fraunces text-4xl mt-3 text-ink">Portafolio</h1>
-        <p className="mt-4 text-sm font-montserrat text-ink/60">Próximamente disponible.</p>
-      </div>
-    </div>
-  );
+export default function PortafolioPage() {
+  return <PortfolioGallery />;
 }

@@ -152,7 +152,7 @@ export default function GoogleReviews() {
           transition={{ delay: 0.4, duration: 0.5 }}
         >
           <a
-            href="https://g.page/r/crealtivastudio/review"
+            href="https://share.google/eNGuKktD5baB05Z3f"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-montserrat text-[12px] font-semibold text-ink/40 hover:text-dusky-rose transition-colors uppercase tracking-[0.1em]"
