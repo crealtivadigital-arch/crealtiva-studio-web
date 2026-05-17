@@ -73,6 +73,8 @@ export default function SesionesDeEstudioPage() {
         title={`Tu imagen personal,\ncomo merece verse`}
         description="Fotografía de imagen profesional, marcas y ropa en estudio con iluminación controlada. Desde retratos para LinkedIn hasta books completos de modelo — todo con dirección de poses incluida."
         ctaLabel="Ver paquetes"
+        imageSrc="https://crealtivastudio.com/wp-content/uploads/2026/05/DSC00427-scaled.webp"
+        imageAlt="Sesiones de fotografía de estudio en Quito — Crealtiva Studio"
       />
 
       {/* Packages */}

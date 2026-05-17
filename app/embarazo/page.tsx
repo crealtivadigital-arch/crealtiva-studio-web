@@ -72,6 +72,8 @@ export default function EmbarazoPage() {
         title={`El amor más grande,\nantes y después del primer abrazo`}
         description="Sesiones artísticas de embarazo y recién nacido con luz cálida, poses seguras y edición atemporal. Imágenes que vas a mirar una y otra vez durante toda la vida."
         ctaLabel="Ver paquetes"
+        imageSrc="https://crealtivastudio.com/wp-content/uploads/2026/05/preparativos-1.avif"
+        imageAlt="Fotografía de maternidad en Quito — Crealtiva Studio"
       />
 
       {/* Packages */}

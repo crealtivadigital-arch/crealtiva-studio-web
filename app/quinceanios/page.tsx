@@ -72,6 +72,8 @@ export default function QuinceaniosPage() {
         title={`Tu historia a los 15,\nhecha imagen para siempre`}
         description="Capturamos el día más especial de tu adolescencia con un estilo soñador y elegante. Fotos y videos que te harán sentir como en una película — sin perder ni un momento."
         ctaLabel="Ver paquetes"
+        imageSrc="https://crealtivastudio.com/wp-content/uploads/2026/05/quince-14.avif"
+        imageAlt="Fotografía de quinceaños en Quito — Crealtiva Studio"
         secondaryCta={{ label: "Ver portafolio", href: "/portafolio/quinceanios" }}
       />
 

@@ -64,6 +64,8 @@ export default function PedidaDeManoPage() {
         title={`El momento en que\ntodo cambia para siempre`}
         description="Coordinamos la sorpresa contigo, llegamos antes, nos posicionamos sin ser vistos — y capturamos el sí con toda su emoción. Discreción absoluta, imágenes para toda la vida."
         ctaLabel="Coordinar la sorpresa"
+        imageSrc="https://crealtivastudio.com/wp-content/uploads/2026/05/compromiso-1.avif"
+        imageAlt="Fotografía de pedida de mano en Quito — Crealtiva Studio"
       />
 
       {/* Packages */}

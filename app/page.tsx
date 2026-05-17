@@ -1,10 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { WHATSAPP_URL } from "@/lib/data/navigation";
+
+const WP = "https://crealtivastudio.com/wp-content/uploads/2026/05";
 
 const priorityServices = [
   {
@@ -64,13 +67,30 @@ const stats = [
   { value: "11", label: "Categorías de servicio" },
 ];
 
+const portfolioGrid = [
+  { src: `${WP}/posboda-1.avif`, alt: "Bodas Quito — Crealtiva Studio" },
+  { src: `${WP}/quince-15.avif`, alt: "Quinceaños Quito" },
+  { src: `${WP}/compromiso-3.avif`, alt: "Pedida de mano Quito" },
+  { src: `${WP}/grados-2.avif`, alt: "Graduaciones Quito" },
+  { src: `${WP}/cumpleanos-1.avif`, alt: "Sesión de cumpleaños" },
+  { src: `${WP}/fiesta-9.avif`, alt: "Eventos familiares Quito" },
+];
+
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative min-h-screen flex items-end bg-ink overflow-hidden">
-        {/* Background placeholder — replace with real hero image */}
-        <div className="absolute inset-0 bg-gradient-to-br from-ink via-ink/90 to-dusky-rose/20" />
+      {/* ── Hero ── */}
+      <section className="relative min-h-screen flex items-end overflow-hidden">
+        <Image
+          src={`${WP}/mini-boda-1.avif`}
+          alt="Fotografía de bodas en Quito — Crealtiva Studio"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-ink/15" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/30 via-transparent to-transparent" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pb-24 pt-40 w-full">
           <motion.div
@@ -100,7 +120,6 @@ export default function HomePage() {
           </motion.div>
         </div>
 
-        {/* Scroll hint */}
         <motion.div
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           animate={{ y: [0, 8, 0] }}
@@ -111,7 +130,7 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* Stats */}
+      {/* ── Stats ── */}
       <section className="py-14 bg-cream/40 border-y border-pearl">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -132,7 +151,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services grid */}
+      {/* ── Services grid ── */}
       <section className="py-20 lg:py-28 bg-white" id="servicios">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
@@ -180,7 +199,6 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* More services */}
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             {[
               { label: "Bautizos & Comunión", href: "/bautizos" },
@@ -201,18 +219,48 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Brand story */}
+      {/* ── Brand story ── */}
       <section className="py-20 lg:py-28 bg-cream/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Placeholder images */}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="bg-pearl aspect-[3/4]" />
-              <div className="flex flex-col gap-3 pt-8">
-                <div className="bg-pearl aspect-square" />
-                <div className="bg-dusky-rose/20 aspect-[3/2]" />
+            <motion.div
+              className="grid grid-cols-2 gap-3"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              <div className="relative overflow-hidden aspect-[3/4]">
+                <Image
+                  src={`${WP}/preparativos-2.avif`}
+                  alt="Preparativos de boda — Crealtiva Studio"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                />
               </div>
-            </div>
+              <div className="flex flex-col gap-3 pt-8">
+                <div className="relative overflow-hidden aspect-square">
+                  <Image
+                    src={`${WP}/compromiso-4.avif`}
+                    alt="Sesión de compromiso"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
+                <div className="relative overflow-hidden aspect-[3/2]">
+                  <Image
+                    src={`${WP}/detalles-2.avif`}
+                    alt="Detalles de boda"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
             <div>
               <SectionHeader
                 kicker="Nuestra historia"
@@ -240,7 +288,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Portfolio preview */}
+      {/* ── Portfolio preview ── */}
       <section className="py-20 lg:py-24 bg-ink">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
@@ -248,16 +296,34 @@ export default function HomePage() {
             title="Imágenes que se miran cien veces"
             light
           />
-          {/* Grid placeholder — replace with real portfolio images */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={i}
-                className={`bg-cream/10 ${
-                  i === 0 ? "aspect-[3/4] md:col-span-2 md:row-span-2 md:aspect-auto" : "aspect-square"
-                }`}
-              />
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-2">
+            {portfolioGrid.map((img, i) => (
+              <motion.div
+                key={img.src}
+                className="relative overflow-hidden aspect-[3/4]"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07, duration: 0.6 }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+              </motion.div>
             ))}
+            <div className="relative col-span-2 md:col-span-3 overflow-hidden aspect-video">
+              <Image
+                src={`${WP}/mini-boda-7.avif`}
+                alt="Bodas y eventos — Crealtiva Studio Quito"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-700 object-[center_35%]"
+                sizes="100vw"
+              />
+            </div>
           </div>
           <div className="mt-8 text-center">
             <Button href="/portafolio" variant="ghost" size="md">
@@ -267,7 +333,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* ── Final CTA ── */}
       <section className="py-20 lg:py-24 bg-cream">
         <div className="max-w-xl mx-auto px-6 text-center">
           <span className="kicker text-dusky-rose">Tu sesión te espera</span>

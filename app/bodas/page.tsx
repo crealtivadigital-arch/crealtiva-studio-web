@@ -72,6 +72,8 @@ export default function BodasPage() {
         title={`Tu día más tuyo,\ncapturado para siempre`}
         description="Fotografiamos bodas con estilo editorial y cercanía humana. Cada imagen cuenta la historia que viviste, con la calidez que merece tu momento más especial."
         ctaLabel="Ver paquetes"
+        imageSrc="https://crealtivastudio.com/wp-content/uploads/2026/05/posboda-1.avif"
+        imageAlt="Fotografía de bodas en Quito — Crealtiva Studio"
         secondaryCta={{ label: "Ver portafolio", href: "/portafolio/bodas" }}
       />
 

@@ -70,6 +70,8 @@ export default function AcademicosPage() {
         title={`Tu logro académico,\ncapturado con orgullo`}
         description="Sesiones individuales de grado, cobertura de ceremonias y producción de anuarios completos para colegios y universidades. Imágenes que celebran el esfuerzo de años."
         ctaLabel="Ver paquetes"
+        imageSrc="https://crealtivastudio.com/wp-content/uploads/2026/05/grados-1.avif"
+        imageAlt="Fotografía académica y de graduación en Quito — Crealtiva Studio"
       />
 
       {/* Packages */}

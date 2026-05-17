@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "cms.crealtivaestudio.com",
         pathname: "/wp-content/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "crealtivastudio.com",
+        pathname: "/wp-content/uploads/**",
+      },
     ],
   },
 };
