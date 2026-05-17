@@ -5,6 +5,7 @@ import NavBar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
 import ChatWidget from "@/components/shared/ChatWidget";
 import CustomCursor from "@/components/shared/CustomCursor";
+import LeadCapturePopup from "@/components/shared/LeadCapturePopup";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -79,6 +80,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <ChatWidget />
+        <LeadCapturePopup />
       </body>
     </html>
   );
