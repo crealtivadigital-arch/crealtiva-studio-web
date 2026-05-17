@@ -78,9 +78,12 @@ export default function ServiceHero({
         </div>
       )}
 
-      {/* ── Content — centrado ── */}
-      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 w-full max-w-3xl mx-auto px-6 lg:px-8 text-center py-40">
-        <motion.div className="flex flex-col items-center">
+      {/* ── Content — izquierda en desktop, centrado en mobile ── */}
+      <motion.div
+        style={{ opacity: contentOpacity }}
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 py-40"
+      >
+        <motion.div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:max-w-[55%]">
           <motion.span {...riseProps(0.05)} className="kicker text-champagne">
             {kicker}
           </motion.span>
@@ -95,7 +98,7 @@ export default function ServiceHero({
 
           <motion.span
             {...fadeProps(0.32)}
-            className="divider-champagne mx-auto mt-6 mb-6 block"
+            className="divider-champagne mt-6 mb-6 block lg:mx-0 mx-auto"
           />
 
           <motion.p
@@ -107,13 +110,13 @@ export default function ServiceHero({
 
           <motion.div
             {...riseProps(0.5)}
-            className="flex flex-wrap justify-center gap-4 mt-10"
+            className="flex flex-wrap justify-center lg:justify-start gap-4 mt-10"
           >
             <Button href={WHATSAPP_URL} external size="lg">
               {ctaLabel}
             </Button>
             {secondaryCta && (
-              <Button href={secondaryCta.href} variant="ghost" size="lg">
+              <Button href={secondaryCta.href} variant="ghost-light" size="lg">
                 {secondaryCta.label}
               </Button>
             )}

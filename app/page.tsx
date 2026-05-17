@@ -95,68 +95,70 @@ export default function HomePage() {
         </motion.div>
         <div className="absolute inset-0 bg-ink/48" />
 
-        {/* Texto centrado — se desvanece al hacer scroll */}
+        {/* Texto — izquierda en desktop, centrado en mobile ── */}
         <motion.div
-          className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
+          className="absolute inset-0 flex items-center px-6 lg:px-16"
           style={{ opacity: heroOpacity }}
         >
-          <motion.div
-            className="flex flex-col items-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.span
-              className="kicker text-champagne tracking-[0.25em]"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              Estudio de Fotografía · Quito, Ecuador
-            </motion.span>
-            <motion.h1
-              className="font-fraunces font-medium text-cream mt-5 leading-[1.08] max-w-[720px]"
-              style={{ fontSize: "clamp(2.2rem, 5.5vw, 4.5rem)" }}
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            >
-              El amor de tu gran día,{" "}
-              <em className="not-italic" style={{ color: "#B18093" }}>
-                capturado
-              </em>{" "}
-              para siempre
-            </motion.h1>
+          <div className="w-full max-w-7xl mx-auto">
             <motion.div
-              className="mt-7 mb-7"
-              style={{ width: "3rem", height: "1px", background: "#C9A87C", display: "block" }}
-              initial={{ scaleX: 0, opacity: 0 }}
-              animate={{ scaleX: 1, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            />
-            <motion.p
-              className="font-montserrat text-cream/80 leading-relaxed max-w-[420px]"
-              style={{ fontSize: "15px" }}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col items-center text-center lg:items-start lg:text-left lg:max-w-[52%]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4 }}
             >
-              Convertimos momentos irrepetibles en imágenes que se miran cien veces sin cansar.
-            </motion.p>
-            <motion.div
-              className="flex flex-wrap justify-center gap-4 mt-10"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <Button href={WHATSAPP_URL} external size="lg">
-                Cotizar ahora
-              </Button>
-              <Button href="/portafolio" variant="ghost-light" size="lg">
-                Ver portafolio
-              </Button>
+              <motion.span
+                className="kicker text-champagne tracking-[0.25em]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              >
+                Estudio de Fotografía · Quito, Ecuador
+              </motion.span>
+              <motion.h1
+                className="font-fraunces font-medium text-cream mt-5 leading-[1.08]"
+                style={{ fontSize: "clamp(2.2rem, 5.5vw, 4.5rem)" }}
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.85, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              >
+                El amor de tu gran día,{" "}
+                <em className="not-italic" style={{ color: "#B18093" }}>
+                  capturado
+                </em>{" "}
+                para siempre
+              </motion.h1>
+              <motion.div
+                className="mt-7 mb-7 lg:mx-0 mx-auto"
+                style={{ width: "3rem", height: "1px", background: "#C9A87C", display: "block" }}
+                initial={{ scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              />
+              <motion.p
+                className="font-montserrat text-cream/80 leading-relaxed max-w-[400px]"
+                style={{ fontSize: "15px" }}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              >
+                Convertimos momentos irrepetibles en imágenes que se miran cien veces sin cansar.
+              </motion.p>
+              <motion.div
+                className="flex flex-wrap justify-center lg:justify-start gap-4 mt-10"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.75, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <Button href={WHATSAPP_URL} external size="lg">
+                  Cotizar ahora
+                </Button>
+                <Button href="/portafolio" variant="ghost-light" size="lg">
+                  Ver portafolio
+                </Button>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Scroll hint */}
