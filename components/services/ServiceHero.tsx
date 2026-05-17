@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import { WHATSAPP_URL } from "@/lib/data/navigation";
@@ -42,21 +43,23 @@ export default function ServiceHero({
   secondaryCta,
 }: ServiceHeroProps) {
   return (
-    <section className="relative min-h-[94vh] flex items-end overflow-hidden bg-ink">
+    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-ink">
 
       {/* ── Background ── */}
       {imageSrc ? (
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${imageSrc})` }}
-          role="img"
-          aria-label={imageAlt}
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/10" />
-        </div>
+        <>
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-ink/52" />
+        </>
       ) : (
         <div className="absolute inset-0" aria-hidden>
-          {/* Radial gradient base */}
           <div
             className="absolute inset-0"
             style={{
@@ -64,55 +67,39 @@ export default function ServiceHero({
                 "radial-gradient(ellipse 90% 70% at 80% -5%, rgba(177,128,147,0.28) 0%, transparent 55%), radial-gradient(ellipse 60% 60% at 15% 105%, rgba(140,95,115,0.20) 0%, transparent 55%), #1A1416",
             }}
           />
-          {/* Decorative outer ring */}
-          <div className="absolute -top-32 -right-32 w-[700px] h-[700px] rounded-full border border-dusky-rose/12 pointer-events-none" />
-          {/* Decorative inner ring */}
-          <div className="absolute -top-12 -right-12 w-[460px] h-[460px] rounded-full border border-champagne/8 pointer-events-none" />
-          {/* Film-reel horizontal lines */}
-          {[18, 30, 42, 54, 66, 78].map((top) => (
-            <div
-              key={top}
-              className="absolute left-0 right-0 h-px"
-              style={{
-                top: `${top}%`,
-                background:
-                  "linear-gradient(to right, transparent, rgba(255,255,255,0.025) 30%, rgba(255,255,255,0.025) 70%, transparent)",
-              }}
-            />
-          ))}
         </div>
       )}
 
-      {/* ── Content ── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pb-24 pt-40">
-        <div className="max-w-[640px]">
-          <motion.span {...riseProps(0.05)} className="kicker text-champagne inline-block">
+      {/* ── Content — centrado ── */}
+      <div className="relative z-10 w-full max-w-3xl mx-auto px-6 lg:px-8 text-center py-40">
+        <motion.div className="flex flex-col items-center">
+          <motion.span {...riseProps(0.05)} className="kicker text-champagne">
             {kicker}
           </motion.span>
 
           <motion.h1
             {...riseProps(0.18)}
-            className="display mt-3 text-cream"
-            style={{ whiteSpace: "pre-line" }}
+            className="font-fraunces font-medium text-cream mt-5 leading-[1.1]"
+            style={{ fontSize: "clamp(2.25rem, 5.5vw, 4.25rem)", whiteSpace: "pre-line" }}
           >
             {title}
           </motion.h1>
 
           <motion.span
             {...fadeProps(0.32)}
-            className="divider-champagne mt-5 mb-6 block"
+            className="divider-champagne mx-auto mt-6 mb-6 block"
           />
 
           <motion.p
             {...riseProps(0.38)}
-            className="text-[15px] font-montserrat text-cream/72 leading-[1.75] max-w-[500px]"
+            className="text-[14.5px] font-montserrat text-cream/75 leading-[1.8] max-w-md"
           >
             {description}
           </motion.p>
 
           <motion.div
             {...riseProps(0.5)}
-            className="flex flex-wrap items-center gap-3 mt-9"
+            className="flex flex-wrap justify-center gap-4 mt-10"
           >
             <Button href={WHATSAPP_URL} external size="lg">
               {ctaLabel}
@@ -123,7 +110,7 @@ export default function ServiceHero({
               </Button>
             )}
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
       {/* ── Scroll indicator ── */}
@@ -134,7 +121,7 @@ export default function ServiceHero({
         transition={{ delay: 1.2, duration: 0.8 }}
         aria-hidden
       >
-        <span className="kicker text-[9px] text-cream/30 tracking-[0.3em]">scroll</span>
+        <span className="kicker text-[9px] text-cream/35 tracking-[0.3em]">scroll</span>
         <motion.div
           className="w-px h-10 origin-top"
           style={{
