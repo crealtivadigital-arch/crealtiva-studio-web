@@ -219,7 +219,7 @@ export default function LeadCapturePopup() {
                       <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-rose-deep text-cream font-montserrat font-semibold text-[13px] uppercase tracking-[0.12em] py-4 mt-1 hover:bg-dusky-rose transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+                        className="w-full bg-rose-deep text-cream font-montserrat font-semibold text-[13px] uppercase tracking-[0.14em] py-4 mt-1 rounded-full hover:bg-dusky-rose transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
                       >
                         {loading ? (
                           "Enviando..."

@@ -49,7 +49,7 @@ export default function Button({
   disabled = false,
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center gap-2 font-montserrat font-semibold uppercase transition-colors duration-200 select-none whitespace-nowrap";
+    "inline-flex items-center justify-center gap-2 font-montserrat font-semibold uppercase transition-colors duration-200 select-none whitespace-nowrap rounded-full";
   const classes = `${base} ${variants[variant]} ${sizes[size]} ${
     disabled ? "opacity-50 pointer-events-none" : ""
   } ${className}`;

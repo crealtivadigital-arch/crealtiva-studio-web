@@ -6,6 +6,7 @@ import Link from "next/link";
 import Button from "@/components/ui/Button";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { WHATSAPP_URL } from "@/lib/data/navigation";
+import GoogleReviews from "@/components/shared/GoogleReviews";
 
 const WP = "https://crealtivastudio.com/wp-content/uploads/2026/05";
 
@@ -117,7 +118,7 @@ export default function HomePage() {
               <Button href={WHATSAPP_URL} external size="lg">
                 Cotizar ahora
               </Button>
-              <Button href="/portafolio" variant="ghost" size="lg">
+              <Button href="/portafolio" variant="ghost-light" size="lg">
                 Ver portafolio
               </Button>
             </div>
@@ -267,7 +268,8 @@ export default function HomePage() {
                   fontSize: "11.5px",
                   color: "rgba(26,20,22,0.55)",
                   border: "1px solid #E7E3E0",
-                  padding: "0.6rem 1.25rem",
+                  padding: "0.5rem 1.25rem",
+                  borderRadius: "9999px",
                   transition: "all 0.2s",
                   letterSpacing: "0.04em",
                 }}
@@ -373,10 +375,13 @@ export default function HomePage() {
             </div>
           </div>
           <div style={{ marginTop: "2.5rem", textAlign: "center" }}>
-            <Button href="/portafolio" variant="ghost" size="md">Ver portafolio completo</Button>
+            <Button href="/portafolio" variant="ghost-light" size="md">Ver portafolio completo</Button>
           </div>
         </div>
       </section>
+
+      {/* ─── RESEÑAS GOOGLE ─── */}
+      <GoogleReviews />
 
       {/* ─── CTA FINAL ─── */}
       <section style={{ background: "#F1E2CF", padding: "6rem 1.5rem" }}>
