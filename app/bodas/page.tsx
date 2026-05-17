@@ -206,7 +206,7 @@ export default function BodasPage() {
             <Button href={WHATSAPP_URL} external size="lg">
               Cotizar por WhatsApp
             </Button>
-            <Button href="/contacto" variant="ghost" size="lg">
+            <Button href="/contacto" variant="ghost-light" size="lg">
               Agendar asesoría
             </Button>
           </div>

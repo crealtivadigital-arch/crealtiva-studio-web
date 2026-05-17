@@ -25,16 +25,16 @@ export default function PackageCard({ pkg, index }: PackageCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.55, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-      className={`group relative flex flex-col transition-all duration-300 ${
+      className={`group relative flex flex-col transition-shadow duration-300 ${
         isFeatured
-          ? "shadow-[0_8px_40px_rgba(177,128,147,0.18)] hover:shadow-[0_16px_56px_rgba(177,128,147,0.28)]"
+          ? "shadow-[0_8px_40px_rgba(177,128,147,0.16)] hover:shadow-[0_16px_56px_rgba(177,128,147,0.26)]"
           : "shadow-sm hover:shadow-md"
       }`}
     >
       {/* Featured badge */}
       {isFeatured && (
         <div className="absolute -top-3.5 inset-x-0 flex justify-center pointer-events-none z-10">
-          <span className="bg-dusky-rose text-white kicker px-5 py-1.5 text-[9.5px] tracking-[0.25em]">
+          <span className="bg-dusky-rose text-cream kicker px-5 py-1.5 text-[9.5px] tracking-[0.22em]">
             Más elegido
           </span>
         </div>
@@ -44,25 +44,25 @@ export default function PackageCard({ pkg, index }: PackageCardProps) {
       <div
         className={`flex flex-col flex-1 ${
           isFeatured
-            ? "bg-white border border-dusky-rose/60"
+            ? "bg-white border border-dusky-rose/50"
             : "bg-white border border-pearl"
         }`}
       >
-        {/* Top accent line for featured */}
+        {/* Featured accent */}
         {isFeatured && (
-          <div className="h-0.5 bg-gradient-to-r from-dusky-rose via-champagne to-dusky-rose" />
+          <div className="h-px bg-gradient-to-r from-dusky-rose via-champagne to-dusky-rose" />
         )}
 
-        <div className="p-7 flex flex-col gap-5 flex-1">
+        <div className="p-6 lg:p-7 flex flex-col gap-4 flex-1">
           {/* Header */}
           <div>
-            <h3 className="font-fraunces font-medium text-[1.2rem] text-ink leading-snug">
+            <h3 className="font-fraunces font-medium text-[1.15rem] text-ink leading-snug">
               {pkg.name}
             </h3>
             {pkg.duration && (
-              <p className="mt-1 kicker text-ink/35 text-[10px]">{pkg.duration}</p>
+              <p className="mt-1 kicker text-ink/30 text-[9.5px]">{pkg.duration}</p>
             )}
-            <p className="mt-3 text-[13.5px] font-montserrat text-ink/65 leading-[1.7]">
+            <p className="mt-3 text-[13px] font-montserrat text-ink/60 leading-[1.72]">
               {pkg.highlight}
             </p>
           </div>
@@ -71,18 +71,18 @@ export default function PackageCard({ pkg, index }: PackageCardProps) {
           <span className="divider-champagne" />
 
           {/* Includes list */}
-          <ul className="flex flex-col gap-2.5 flex-1">
+          <ul className="flex flex-col gap-2 flex-1">
             {pkg.includes.map((item) => (
               <li
                 key={item}
-                className="flex items-start gap-2.5 text-[13px] font-montserrat text-ink/75 leading-snug"
+                className="flex items-start gap-2.5 text-[12.5px] font-montserrat text-ink/70 leading-snug"
               >
                 <svg
-                  className="w-3.5 h-3.5 text-champagne flex-shrink-0 mt-0.5"
+                  className="w-3 h-3 text-champagne flex-shrink-0 mt-[3px]"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  strokeWidth={2}
+                  strokeWidth={2.5}
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
@@ -92,23 +92,23 @@ export default function PackageCard({ pkg, index }: PackageCardProps) {
           </ul>
 
           {/* Price + CTA */}
-          <div className="pt-5 border-t border-pearl mt-2">
-            <div className="flex items-baseline gap-1.5 mb-4">
-              {pkg.priceLabel && (
-                <span className="text-xs font-montserrat text-ink/40 font-medium">
+          <div className="pt-4 border-t border-pearl mt-1">
+            <div className="flex items-baseline gap-1 mb-5">
+              {pkg.priceLabel && !isCotizacion && (
+                <span className="text-[11px] font-montserrat text-ink/35 font-medium">
                   {pkg.priceLabel}
                 </span>
               )}
               {isCotizacion ? (
-                <span className="font-fraunces text-2xl font-medium text-ink">
+                <span className="font-fraunces text-[1.4rem] font-medium text-ink">
                   A cotizar
                 </span>
               ) : (
                 <>
-                  <span className="font-fraunces text-4xl font-medium text-ink leading-none">
+                  <span className="font-fraunces text-[2.2rem] font-medium text-ink leading-none">
                     ${pkg.price}
                   </span>
-                  <span className="text-xs font-montserrat text-ink/35">.00</span>
+                  <span className="text-[11px] font-montserrat text-ink/30">.00</span>
                 </>
               )}
             </div>
@@ -117,7 +117,7 @@ export default function PackageCard({ pkg, index }: PackageCardProps) {
               external
               variant={isFeatured ? "primary" : "secondary"}
               size="sm"
-              className="w-full justify-center"
+              className="w-full"
             >
               {isCotizacion ? "Solicitar propuesta" : "Cotizar este paquete"}
             </Button>

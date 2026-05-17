@@ -164,7 +164,7 @@ export default function PedidaDeManoPage() {
             <Button href={WHATSAPP_URL} external size="lg">
               Coordinar por WhatsApp
             </Button>
-            <Button href="/contacto" variant="ghost" size="lg">
+            <Button href="/contacto" variant="ghost-light" size="lg">
               Enviar mensaje
             </Button>
           </div>

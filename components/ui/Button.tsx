@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "ghost-light";
 type ButtonSize = "sm" | "md" | "lg";
 
 interface ButtonProps {
@@ -20,18 +20,22 @@ interface ButtonProps {
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-rose-deep text-white hover:bg-[#7a5063] border border-rose-deep",
+    "bg-rose-deep text-cream hover:bg-[#7a5063] border border-rose-deep",
   secondary:
-    "bg-transparent text-ink border border-ink hover:bg-ink hover:text-cream",
+    "bg-transparent text-ink border border-ink/40 hover:border-ink hover:bg-ink hover:text-cream",
   ghost:
-    "bg-transparent text-dusky-rose border border-dusky-rose hover:bg-dusky-rose hover:text-white",
+    "bg-transparent text-dusky-rose border border-dusky-rose/60 hover:bg-dusky-rose hover:text-cream hover:border-dusky-rose",
+  "ghost-light":
+    "bg-transparent text-cream/80 border border-cream/30 hover:bg-cream/10 hover:text-cream hover:border-cream/60",
 };
 
 const sizes: Record<ButtonSize, string> = {
-  sm: "px-5 py-2.5 text-[11px]",
-  md: "px-7 py-3.5 text-[11px]",
-  lg: "px-9 py-4 text-[12px]",
+  sm: "px-6 py-2.5 text-[10.5px] tracking-[0.14em]",
+  md: "px-8 py-3.5 text-[11px] tracking-[0.14em]",
+  lg: "px-10 py-4 text-[11.5px] tracking-[0.14em]",
 };
+
+const MotionLink = motion(Link);
 
 export default function Button({
   children,
@@ -45,21 +49,24 @@ export default function Button({
   disabled = false,
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center font-montserrat font-semibold tracking-[0.18em] uppercase transition-all duration-200 select-none";
-  const classes = `${base} ${variants[variant]} ${sizes[size]} ${disabled ? "opacity-50 pointer-events-none" : ""} ${className}`;
+    "inline-flex items-center justify-center gap-2 font-montserrat font-semibold uppercase transition-colors duration-200 select-none whitespace-nowrap";
+  const classes = `${base} ${variants[variant]} ${sizes[size]} ${
+    disabled ? "opacity-50 pointer-events-none" : ""
+  } ${className}`;
 
   if (href) {
     return (
-      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-        <Link
-          href={href}
-          className={classes}
-          target={external ? "_blank" : undefined}
-          rel={external ? "noopener noreferrer" : undefined}
-        >
-          {children}
-        </Link>
-      </motion.div>
+      <MotionLink
+        href={href}
+        className={classes}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        whileHover={{ scale: 1.015 }}
+        whileTap={{ scale: 0.985 }}
+        transition={{ duration: 0.15 }}
+      >
+        {children}
+      </MotionLink>
     );
   }
 
@@ -69,8 +76,9 @@ export default function Button({
       onClick={onClick}
       disabled={disabled}
       className={classes}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={{ scale: 1.015 }}
+      whileTap={{ scale: 0.985 }}
+      transition={{ duration: 0.15 }}
     >
       {children}
     </motion.button>

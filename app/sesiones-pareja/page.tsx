@@ -190,7 +190,7 @@ export default function SesionesParejaPage() {
             <Button href={WHATSAPP_URL} external size="lg">
               Agendar por WhatsApp
             </Button>
-            <Button href="/contacto" variant="ghost" size="lg">
+            <Button href="/contacto" variant="ghost-light" size="lg">
               Enviar mensaje
             </Button>
           </div>
